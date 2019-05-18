@@ -76,13 +76,9 @@ class TripletGenerator:
 
         return TripletStream(streams, batch_size)
 
-def chunks(l, n):
+def flow(x,  y, n):
     # For item i in a range that is a length of l,
     for i in range(0, len(l), n):
         # Create an index range for l of n items:
-        yield l[i:i + n]
+        yield x[i:i + n], y[i:i + n]
 
-    
-def flow(x,y ,batch_size):
-    yield chunks(x, batch_size), chunks(y, batch_size)
-    
